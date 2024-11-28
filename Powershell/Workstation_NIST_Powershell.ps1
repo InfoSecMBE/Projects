@@ -35,3 +35,20 @@ REG ADD HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Sy
 # Step 11 - Eject removable NTFS media - PowerShell
 REG ADD "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon" /v AllocateDASD /t REG_DWORD /d 2 /f
 
+# Step 12 - Disable Guest Account Status - Command Prompt
+Net user "localgst" /active:no
+
+# Step 13 - Hide Guest Account - PowerShell
+REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList" /v SpecialAccounts /t REG_DWORD /d 0 /f
+
+# Step 14 - Admins only install shared printers - PowerShell
+REG ADD "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Print\Providers\LanMan Print Services\Servers" /v AddPrinterDrivers /t REG_DWORD /d 1 /f
+
+# Step 15 - Maximum password age - 30 days or less - Command Prompt
+net accounts /maxpwage:30
+
+#Step 16 - CTRL+ALT+DEL is required before logon - PowerShell
+REG ADD HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableCAD /t REG_DWORD /d 0 /f
+
+
+
