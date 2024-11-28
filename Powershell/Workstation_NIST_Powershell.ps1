@@ -47,8 +47,19 @@ REG ADD "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Print\Providers\Lan
 # Step 15 - Maximum password age - 30 days or less - Command Prompt
 net accounts /maxpwage:30
 
-#Step 16 - CTRL+ALT+DEL is required before logon - PowerShell
+# Step 16 - CTRL+ALT+DEL is required before logon - PowerShell
 REG ADD HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DisableCAD /t REG_DWORD /d 0 /f
+
+# Step 17 - Don't display last signed in - PowerShell
+REG ADD HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System /v DontDisplayLastUserName /d 1 /f
+
+# Step 18 - Machine account lockout threshold - PowerShell
+REG ADD HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System /v MaxDevicePasswordFailedAttempts /d 10 /f
+
+
+
+
+
 
 
 
